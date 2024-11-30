@@ -102,7 +102,9 @@ public class AccountServiceImpl implements GenericService<Account>, ParserServic
     @Transactional
     @LogDataSourceError
     @Override
-    public List<Account> findAll() { return accountRepository.findAll(); }
+    public List<Account> findAll() {
+        return accountRepository.findAll();
+    }
 
     @Transactional
     @LogDataSourceError
@@ -140,7 +142,7 @@ public class AccountServiceImpl implements GenericService<Account>, ParserServic
 
     @Transactional(readOnly = true)
     @LogDataSourceError
-    public List<Transaction> findAllTransactionsByAccountId(UUID accountUuid) throws AccountException{
+    public List<Transaction> findAllTransactionsByAccountId(UUID accountUuid) throws AccountException {
         Optional<Account> account = Optional.ofNullable(accountRepository.findByAccountUuid(accountUuid));
         if (account.isEmpty()) {
             throw new AccountException(String.format("Account with uuid %s is not exists", accountUuid));

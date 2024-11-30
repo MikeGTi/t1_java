@@ -58,6 +58,17 @@ t1:
     full-data-file-path: mock_data/full_mock_data.json
     add-objects-counter: 100
 
+integration:
+  url: http://localhost:8088
+  resource: /bsc-wire-mock/api/client/check
+  retry-count: 3
+  retry-backoff: 1000
+
+  db:
+    enabled: false
+  time-limit-exceed: 1000
+  log-level: DEBUG
+
 track:
   errors-to-track: JsonParseException, IOException
   method-execution-time-limit-ms: 500

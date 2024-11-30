@@ -50,11 +50,10 @@ public class ClientController {
     }
 
     @GetMapping("/{clientUuid}")
-    public ResponseEntity<ClientDto> getClientById(@PathVariable UUID clientUuid) {
+    public ResponseEntity<ClientDto> getClientByUuid(@PathVariable UUID clientUuid) {
         try {
             return new ResponseEntity<>(ClientMapper.toDto(clientService.findByClientUuid(clientUuid)),
                                         HttpStatus.OK);
-            
         } catch (ClientException e) {
             log.error(e.getMessage());
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -71,7 +70,6 @@ public class ClientController {
             log.error(e.getMessage());
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        
     }
 
     @DeleteMapping("/{clientUuid}")
@@ -84,5 +82,4 @@ public class ClientController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-
 }

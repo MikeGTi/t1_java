@@ -22,7 +22,7 @@ public class KafkaTransactionAcceptedResultConsumer<T extends TransactionDto> {
     private final TransactionFirstServiceImpl transactionFirstService;
     private final TransactionMapper transactionMapper;
 
-    @KafkaListener(id = "${t1.kafka.topic.transaction-registration}, ${t1.kafka.topic.transaction-result}",
+    @KafkaListener(id = "${t1.kafka.consumer.group-id}",
                    topics = "${t1.kafka.topic.transaction-registration}, ${t1.kafka.topic.transaction-result}",
                    containerFactory = "kafkaListenerContainerFactory")
     public void listener(@Payload List<T> messageList,

@@ -24,7 +24,8 @@ public class MetricAspect {
     private Long timeLimitMs;
 
     @Pointcut("within(ru.t1.java.demo.*)")
-    public void checkMethodsExecutionTime() {}
+    public void checkMethodsExecutionTime() {
+    }
 
     @Around("@annotation(ru.t1.java.demo.aop.Metric)")
     public Object trackingExecutionTime(ProceedingJoinPoint pJoinPoint) throws Throwable {

@@ -21,12 +21,8 @@ import java.util.UUID;
 @RequestMapping("/transaction")
 public class TransactionController {
 
-    /*private final TransactionRegistrarServiceImpl transactionRegistrarService;
-    private final TransactionHandlerService transactionHandlerService;*/
-
     private final TransactionServiceImpl transactionServiceImpl;
     private final AccountServiceImpl accountService;
-    
     private final TransactionMapper transactionMapper;
 
     /*//@LogException
@@ -37,7 +33,6 @@ public class TransactionController {
     public void doSomething() throws TransactionException {
         throw new TransactionException("Transaction error");
     }*/
-
 
     @PostMapping
     public ResponseEntity<TransactionDto> createTransaction(@RequestBody TransactionDto transactionDto) {

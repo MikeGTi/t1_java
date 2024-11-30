@@ -2,7 +2,6 @@ package ru.t1.java.demo.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Getter
 @Setter

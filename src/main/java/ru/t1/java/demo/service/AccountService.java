@@ -6,7 +6,6 @@ import ru.t1.java.demo.exception.AccountException;
 import ru.t1.java.demo.model.Account;
 import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 public interface AccountService {
@@ -40,5 +39,5 @@ public interface AccountService {
 
     @Transactional
     @LogDataSourceError
-    void delete(UUID account_uuid) throws AccountException;
+    void delete(UUID accountUuid) throws AccountException;
 }

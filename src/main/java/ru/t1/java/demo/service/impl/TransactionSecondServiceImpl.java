@@ -45,26 +45,24 @@ public class TransactionSecondServiceImpl implements HandleService<Transaction> 
     @Override
     public void handle(Iterable<Transaction> entities) {
         // set Transaction status
-        entities.forEach(transaction ->
-            {
-                 BigDecimal balance = transaction.getAccount().getBalance();
-                 List<Transaction> list = transactionRepository.findAllTransactionsByCreatedBetween(transaction.getCreated().minus(blockPeriod),
-                                                                                                    transaction.getCreated());
-
-                 if (balance.add(transaction.getAmount()).compareTo(BigDecimal.ZERO) < 0) {
-                     transaction.setStatus(TransactionStatus.REJECTED);
-                 } else if (list.size() > 1) {
-                     list.forEach(t -> {
-                                         t.setStatus(TransactionStatus.BLOCKED);
-                                         String message = buildJsonMessage(t, t.getAccount());
-                                         producer.sendTo(topicToSend, message);
-                     });
-                 } else {
-                     Account account = transaction.getAccount();
-                     account.setBalance(account.getBalance().add(transaction.getAmount()));
-                     transaction.setStatus(TransactionStatus.ACCEPTED);
-                 }
-            }
+        entities.forEach(transaction -> {
+                            BigDecimal balance = transaction.getAccount().getBalance();
+                            List<Transaction> list = transactionRepository.findAllTransactionsByCreatedBetween(transaction.getCreated().minus(blockPeriod),
+                                                                                                            transaction.getCreated());
+                            if (balance.add(transaction.getAmount()).compareTo(BigDecimal.ZERO) < 0) {
+                             transaction.setStatus(TransactionStatus.REJECTED);
+                            } else if (list.size() > 1) {
+                             list.forEach(t -> {
+                                                 t.setStatus(TransactionStatus.BLOCKED);
+                                                 String message = buildJsonMessage(t, t.getAccount());
+                                                 producer.sendTo(topicToSend, message);
+                             });
+                            } else {
+                             Account account = transaction.getAccount();
+                             account.setBalance(account.getBalance().add(transaction.getAmount()));
+                             transaction.setStatus(TransactionStatus.ACCEPTED);
+                            }
+                        }
         );
 
         // send message

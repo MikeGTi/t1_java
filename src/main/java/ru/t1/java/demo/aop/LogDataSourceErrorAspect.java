@@ -28,7 +28,8 @@ public class LogDataSourceErrorAspect {
     private final DataSourceErrorLogRepository repository;
 
     @Pointcut("within(ru.t1.java.demo.*)")
-    public void dataSourceErrorLogMethods() {}
+    public void dataSourceErrorLogMethods() {
+    }
 
     @AfterThrowing(pointcut = "@annotation(ru.t1.java.demo.aop.LogDataSourceError)", throwing = "ex")
     public void logDataSourceErrorAdvice(JoinPoint joinPoint, Exception ex) {

@@ -22,7 +22,7 @@ public class KafkaAccountConsumer {
     private final AccountMapper accountMapper;
 
 
-    @KafkaListener(id = "${t1.kafka.topic.account-registration}",
+    @KafkaListener(id = "${t1.kafka.consumer.group-id}",
                    topics = "${t1.kafka.topic.account-registration}",
                    containerFactory = "kafkaListenerContainerFactory")
     public void listener(@Payload List<AccountDto> messageList,
