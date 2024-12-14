@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DiffGenerationConfig">
+    <option name="sourceModelValue" value="t1-metric-starter:t1-metric-starter" />
+    <option name="targetDbValue" value="20fb792d-1bea-4950-a986-0b3c2f9583f4" />
+    <option name="updateChangeLogPath" value="t1_service1/src/main/resources/db/changelog/db.changelog-master.xml" />
+    <option name="updateDbConnectionName" value="20fb792d-1bea-4950-a986-0b3c2f9583f4" />
+  </component>
+</project>

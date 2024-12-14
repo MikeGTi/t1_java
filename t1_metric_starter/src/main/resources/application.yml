@@ -1,0 +1,62 @@
+spring:
+  application:
+    name: t1-metric-starter
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:/db/init.sql
+
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/t1_metric_db"
+    username: "postgres"
+    password: "postgres"
+    driverClassName: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+  liquibase:
+    enabled: true
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${DB_HOST:localhost:5432}/t1_metric_db
+    user: postgres
+    password: postgres
+    change-log: classpath:/db/changelog/db.changelog-master.xml
+
+server:
+  port: 8090
+
+logging:
+  level:
+    ROOT: INFO
+    ru.t1.java.demo.controller.ClientController: DEBUG
+
+t1:
+  scan-path: ru.mboychook
+
+  kafka:
+    enabled: ${TRACK_KAFKA_LOG_ENABLED:true}
+    bootstrap:
+      server: ${KAFKA_SERVER:localhost:9092}
+    consumer:
+      group-id: t1_demo
+      max-poll-records: 10
+    producer:
+      enable: true
+    topic:
+      data-source-errors: t1_demo_data_source_error
+      methods-metric: t1_demo_metrics
+
+      header:
+        data-source-errors-header: DATA_SOURCE
+        methods-metric-header: METRICS
+
+track:
+  errors-to-track: JsonParseException, IOException
+  method-execution-time-limit-ms: 500
+
+  db:
+    enabled: false
+  time-limit-exceed: 1000
+  log-level: DEBUG

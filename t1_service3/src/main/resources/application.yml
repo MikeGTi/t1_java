@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: t1-java-unlock-service
+
+  liquibase:
+    enabled: false

@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=config.MetricApplicationConfig
+org.springframework.boot.autoconfigure.domain.EntityScan=ru.mboychook.model.*

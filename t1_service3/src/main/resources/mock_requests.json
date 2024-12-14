@@ -1,0 +1,18 @@
+{
+  "account": {
+    "account_uuid": "29e03f9c-c7db-4fae-bf68-7eb8acd0c41c",
+    "client_uuid": "c38e1945-5196-4313-912e-3d963a5451a4",
+    "accountType": "DEBIT",
+    "status": "ARRESTED",
+    "balance": "10005.00",
+    "frozen_amount": "105.00"
+  },
+  "client": {
+  "client_uuid": "f4b56d59-9ff3-4f9f-a216-3d1c3c990639",
+  "first_name": "test1Name",
+  "middle_name": "test1MiddleName",
+  "last_name": "test1LastName",
+  "blocked_for": false,
+  "blocked_whom": "All"
+  }
+}
