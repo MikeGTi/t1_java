@@ -1,12 +1,10 @@
 package ru.mboychook.util;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 import ru.mboychook.aop.LogDataSourceError;
 import ru.mboychook.aop.Track;
 import ru.mboychook.model.entity.DataSourceErrorLog;
