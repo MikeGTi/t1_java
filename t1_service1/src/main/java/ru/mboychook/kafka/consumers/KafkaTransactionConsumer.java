@@ -13,7 +13,6 @@ import ru.mboychook.util.TransactionMapper;
 
 import java.util.List;
 
-// todo re-code consumer on injection: topics &  service
 @Slf4j
 @RequiredArgsConstructor
 @Component
